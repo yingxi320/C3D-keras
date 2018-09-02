@@ -1,8 +1,9 @@
 import cv2
 import os
+from utils import *
 
-video_path = '/home/tianz/datasets/ucf101/'
-save_path = '/home/tianz/datsets/ucfimgs/'
+#video_path = '/home/tianz/datasets/ucf101/'
+save_path = img_path
 
 action_list = os.listdir(video_path)
 
