@@ -1,6 +1,7 @@
 import os
+from utils import *
 
-img_path = '/home/tianz/datsets/ucfimgs/'
+#img_path = '/home/tianz/datsets/ucfimgs/'
 f1 = open('ucfTrainTestlist/train_file.txt','r')
 f2 = open('ucfTrainTestlist/test_file.txt','r')
 
