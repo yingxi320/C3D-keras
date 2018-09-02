@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
 from models import c3d_model
 from keras.optimizers import SGD,Adam
-from keras.utils import np_utils,video_path,img_path
+from keras.utils import np_utils
+from utils import video_path,img_path
 from schedules import onetenth_4_8_12
 import numpy as np
 import random
