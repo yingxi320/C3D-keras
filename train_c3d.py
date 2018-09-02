@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from models import c3d_model
 from keras.optimizers import SGD,Adam
-from keras.utils import np_utils
+from keras.utils import np_utils,video_path,img_path
 from schedules import onetenth_4_8_12
 import numpy as np
 import random
@@ -69,7 +69,7 @@ def process_batch(lines,img_path,train=True):
             is_flip = random.randint(0, 1)
             for j in range(16):
                 img = imgs[symbol + j]
-                image = cv2.imread(root_path + path + '/' + img)
+                image = cv2.imread(video_path + path + '/' + img)
                 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                 image = cv2.resize(image, (171, 128))
                 if is_flip == 1:
@@ -135,13 +135,13 @@ def generator_val_batch(val_txt,batch_size,num_classes,img_path):
             b = (i + 1) * batch_size
             y_test,y_labels = process_batch(new_line[a:b],img_path,train=False)
             x = preprocess(y_test)
-            test_data = np.transpose(test_data,(0,2,3,1,4))
+            x = np.transpose(x,(0,2,3,1,4))
             y = np_utils.to_categorical(np.array(y_labels), num_classes)
             yield test_data, y
 
 
 def main():
-    img_path = '/home/tianz/datsets/ucfimgs/'
+    #img_path = '/home/tianz/datsets/ucfimgs/'
     train_file = 'train_list.txt'
     test_file = 'test_list.txt'
     f1 = open(train_file, 'r')
